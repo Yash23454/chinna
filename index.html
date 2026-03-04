@@ -2,49 +2,86 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Open When 💖</title>
+<title>Bantiii Nikosame 💖</title>
+
 <style>
 body {
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to right, #ffd6e8, #ffeef5);
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  overflow-x: hidden;
   text-align: center;
-  padding: 40px;
+  color: white;
+}
+
+/* Floating hearts */
+.heart {
+  position: fixed;
+  bottom: -10px;
+  font-size: 20px;
+  animation: float 6s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); opacity: 0.7; }
+  100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+/* Glass card */
+.container {
+  margin-top: 60px;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px;
+  width: 85%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
 }
 
 h1 {
-  color: #d63384;
+  font-size: 32px;
+  margin-bottom: 10px;
 }
 
 button {
-  padding: 12px 20px;
-  margin: 10px;
+  padding: 12px 18px;
+  margin: 8px;
   border: none;
   border-radius: 25px;
-  background-color: #ff4d88;
+  background: #ff4d6d;
   color: white;
-  font-size: 16px;
+  font-size: 15px;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 button:hover {
-  background-color: #e6005c;
+  background: #e63950;
+  transform: scale(1.05);
 }
 
 #messageBox {
-  margin-top: 30px;
+  margin-top: 20px;
   padding: 20px;
-  background: white;
+  background: rgba(255,255,255,0.3);
   border-radius: 15px;
   min-height: 100px;
   font-size: 18px;
+  transition: opacity 0.4s ease-in-out;
 }
 </style>
 </head>
 
 <body>
 
-<h1>Open When... 💖</h1>
-<p>For every mood you have, I have something for you.</p>
+<h1>Bantiii Nikosame 💖</h1>
+<p>For every emotion you feel... I am right here with you ❤️</p>
+
+<div class="container">
 
 <button onclick="showMessage(missMe)">🥺 Miss Me</button>
 <button onclick="showMessage(sad)">💔 Sad</button>
@@ -52,281 +89,103 @@ button:hover {
 <button onclick="showMessage(fight)">😡 After Fight</button>
 <button onclick="showMessage(night)">🌙 Can't Sleep</button>
 
-<div id="messageBox">Click a button to see my heart ❤️</div>
+<div id="messageBox">Click any emotion… and feel my hug 🤍</div>
+
+</div>
 
 <script>
 
+/* Floating Hearts Generator */
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "💖";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = Math.random() * 20 + 15 + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 6000);
+}, 800);
+
+/* Message Arrays */
+
 const missMe = [
 "Nuvvu nannu miss avutunte nenu kuda ade feel avutunna.",
-"Time difference mana heart difference kaadu.",
-"Nenu nidrapotunna time lo kuda nee gurinchi alochistha.",
 "USA night aina, India morning aina mana love same.",
+"Time difference mana heart difference kaadu.",
 "Ee distance temporary, mana bond permanent.",
-"Nuvvu lonely kaadu, nenu neetho unna.",
 "Oka roju same time zone lo untam.",
-"Nee message kosam wait chese moment best part.",
-"Nuvvu naa life lo biggest blessing.",
 "Naa heart permanent address nee peru.",
-"Nuvvu nannu miss avvadam cute.",
-"Distance mana love ni strong chesthundi.",
-"Nuvvu navvute naa roju complete.",
-"Phone lo kaadhu, naa pranam lo untav.",
-"Mana madhya kms unna doubt ledu.",
-"Ee wait mana future hugs kosam.",
+"Nuvvu naa world.",
 "Naa future lo nuvve.",
 "Airport lo first hug kosam wait chesthunna.",
-"Nuvvu naa world.",
-"Miss avvadam normal, mana love extraordinary.",
-"Nee voice vinakapothe roju complete kaadu.",
-"Nuvvu naa strength.",
-"Naa day start nee thought tho.",
-"Naa day end nee memory tho.",
-"Nuvvu naa life partner.",
-"Ee dooram mana test matrame.",
-"Nuvvu special.",
-"Naa luck start ayyindi ninnu kalisinappudu.",
-"Nuvvu naa forever.",
-"Mana story special.",
-"Nuvvu naa home.",
-"Nee kosam kastam happy ga chestha.",
-"Distance ni gelichina love mana love.",
-"Nuvvu naa peace.",
-"Nee smile naa happiness.",
-"Nuvvu naa world lo main character.",
-"Nuvvu naa heartbeat.",
-"Mana prema strong.",
-"Ee kastam lifetime happiness kosam.",
-"Nuvvu naa best decision.",
-"Naa manasu nee daggara.",
-"Nuvvu naa support system.",
-"Nee patience kosam proud.",
-"Nuvvu naa comfort.",
-"Mana love long distance kaadu long lasting.",
-"Nuvvu naa strength and weakness.",
-"Nee gurinchi alochinchadam naa hobby.",
-"Nuvvu naa prayer answer.",
-"Mana bond unbreakable.",
 "Nuvvu naa forever person."
 ];
 
 const sad = [
 "Edavaku amma, nenu neetho unna.",
-"Nee tears naa heart ni hurt chestayi.",
-"Nuvvu strong girl.",
-"Ee phase kuda pass aipothundi.",
-"Nuvvu alone kaadu.",
-"Nee pain naku kuda feel avutundi.",
-"Nuvvu naa sunshine.",
 "Sad days temporary.",
-"Nee smile malli vastundi.",
-"Nenu nee side lo unna.",
-"Nuvvu chala strong.",
 "Naa hug imagine chesuko.",
+"Nuvvu strong girl.",
 "Everything will be okay.",
-"Nuvvu naa fighter.",
-"Naa love neeku protection.",
-"Edavaku please.",
-"Nuvvu precious.",
-"Nee happiness kosam nenu unna.",
-"Nuvvu naa angel.",
-"Bad day ≠ bad life.",
-"Nuvvu brave.",
-"Mana love neeku strength.",
+"Nuvvu naa sunshine.",
 "Naa support always.",
-"Nuvvu naa queen.",
-"Sadness temporary.",
-"Nuvvu shine avuthav.",
-"Naa words neeku hug la undali.",
-"Nee smile world ki kavali.",
-"Nuvvu capable.",
-"Everything fix aipothundi.",
-"Naa heart neeku safe place.",
+"Nuvvu precious.",
 "Nuvvu alone kaadu.",
-"Naa prayers lo unnav.",
-"Nuvvu naa peace.",
-"Edavaku baby.",
-"Nenu proud of you.",
-"Nuvvu naa blessing.",
-"Better days coming.",
-"Nuvvu strong.",
-"Naa love strong.",
-"Nuvvu naa strength.",
-"Smile please.",
-"Nuvvu naa world.",
-"Naa support neeku.",
-"Nuvvu brave girl.",
-"Nuvvu powerful.",
-"Naa hug imagine.",
-"Everything ok.",
-"Nuvvu naa happiness.",
-"Nenu neetho unna."
+"Better days coming."
 ];
 
 const insecure = [
 "Nuvvu chala beautiful.",
-"Nuvvu compare avvalasina avasaram ledu.",
 "Naa eyes lo nuvve best.",
 "Nuvvu enough.",
-"Nuvvu perfect for me.",
-"Naa choice nuvve.",
-"Nuvvu replace avvavu.",
-"Naa heart lo permanent.",
-"Nuvvu special.",
-"Nuvvu unique.",
-"Naa life lo best person.",
-"Nuvvu valuable.",
-"Naa respect neeku.",
-"Nuvvu smart.",
-"Nuvvu strong.",
-"Nuvvu lovable.",
-"Naa future lo nuvve.",
-"Nuvvu doubt padaku.",
-"Nuvvu secure.",
-"Naa love constant.",
-"Nuvvu priority.",
-"Naa queen.",
-"Nuvvu chala important.",
-"Nuvvu naa happiness.",
-"Nuvvu naa everything.",
-"Nuvvu best decision.",
 "Nuvvu irreplaceable.",
-"Nuvvu precious.",
-"Nuvvu beautiful inside & out.",
-"Nuvvu naa pride.",
-"Nuvvu naa peace.",
-"Nuvvu best girl.",
-"Nuvvu chala caring.",
-"Nuvvu loyal.",
-"Nuvvu trustworthy.",
-"Nuvvu enough for me.",
-"Nuvvu perfect.",
+"Naa choice nuvve.",
+"Nuvvu perfect for me.",
 "Naa heart only for you.",
-"Nuvvu safe.",
-"Nuvvu confident.",
-"Nuvvu strong woman.",
-"Nuvvu shining star.",
-"Nuvvu naa future.",
-"Nuvvu naa home.",
-"Nuvvu naa forever.",
-"Nuvvu naa choice always.",
-"Nuvvu best partner.",
-"Nuvvu naa love.",
-"Nuvvu naa strength.",
-"Nuvvu naa soulmate."
+"Nuvvu valuable.",
+"Nuvvu naa pride.",
+"Nuvvu secure with me."
 ];
 
 const fight = [
 "Sorry if I hurt you.",
-"Nenu ninnu hurt cheyyali anukoledu.",
 "Mana fight mana love kanna pedda kaadu.",
-"Nuvvu naa priority.",
-"Mana misunderstanding clear cheddam.",
 "Naa ego kanna mana bond important.",
-"Nuvvu naa person.",
-"Nenu neetho settle avvali anukuntunna.",
-"Naa love genuine.",
-"Nuvvu naa peace.",
-"Naa mistake unte sorry.",
-"Mana love strong.",
-"Nuvvu important.",
-"Mana fight temporary.",
-"Naa heart neeku.",
-"Nenu adjust avutha.",
-"Nuvvu naa forever.",
-"Naa respect neeku.",
-"Nuvvu safe with me.",
-"Mana bond unbreakable.",
-"Nuvvu naa best friend.",
-"Naa anger temporary.",
+"Nuvvu naa priority.",
+"Let’s fix this together.",
 "Naa love permanent.",
-"Let’s talk calmly.",
-"Nuvvu naa happiness.",
-"Naa world nuvve.",
-"Fight mana story lo chapter matrame.",
-"Naa choice nuvve.",
-"Nuvvu naa queen.",
-"Nenu ready to fix.",
-"Nuvvu naa strength.",
-"Naa care genuine.",
-"Nuvvu naa support.",
-"Mana love win avuthundi.",
-"Naa promise strong.",
-"Nuvvu naa forever.",
-"Sorry baby.",
-"Naa hug kosam wait chesthunna.",
-"Mana future together.",
-"Nuvvu naa safe place.",
-"Nenu neetho untanu.",
-"Nuvvu naa life.",
-"Naa love deep.",
-"Nuvvu naa partner.",
-"Nenu sorry chepthunna.",
-"Mana bond special.",
-"Nuvvu naa heart.",
-"Naa love stable.",
-"Nuvvu naa home.",
-"Let’s fix this together."
+"Nuvvu naa best friend.",
+"Nenu adjust avutha.",
+"Naa heart neeku.",
+"Mana bond unbreakable."
 ];
 
 const night = [
-"Nuvvu ippudu nidrapoleni time lo nenu alochisthunna.",
 "USA lo nenu nidrapotunna, kani naa heart nee daggara.",
 "Good night amma.",
-"Dream lo kaluddam.",
 "Naa hug imagine chesuko.",
-"Nuvvu safe.",
-"Naa love neeku blanket la undali.",
-"Nidra raakapothe naa peru cheppu.",
 "Stars same mana sky lo.",
-"Nuvvu calm ga undu.",
-"Naa thoughts neeku.",
-"Nuvvu peaceful sleep pondali.",
-"Naa voice imagine chesuko.",
-"Good night my love.",
-"Nuvvu naa moon.",
-"Nuvvu naa star.",
-"Naa heart neeku.",
-"Nidra sweet ga undali.",
-"Nuvvu secure.",
-"Naa love warm.",
-"USA night → India morning love.",
-"Nuvvu calm.",
-"Naa hug tight.",
-"Nuvvu peaceful.",
-"Sweet dreams.",
-"Naa mind lo nuvve.",
-"Nuvvu naa peace.",
-"Naa love neeku protection.",
-"Nuvvu relaxed.",
-"Naa words neeku lullaby.",
-"Nuvvu naa sunshine.",
-"Nidra baga paduko.",
-"Nuvvu naa happiness.",
-"Naa hug virtual.",
 "Nuvvu safe with me.",
-"Naa heart neeku close.",
-"Nuvvu naa world.",
-"Dream about us.",
-"Nuvvu naa forever.",
-"Naa love strong.",
-"Nidra chala important.",
-"Nuvvu naa priority.",
-"Naa thoughts neeku warm.",
-"Nuvvu naa angel.",
-"Sleep tight.",
-"Nuvvu naa soulmate.",
-"Naa hug waiting.",
-"Nuvvu naa life.",
-"Good night sweetheart.",
+"Sweet dreams.",
+"Naa words neeku lullaby la undali.",
+"Nidra baga paduko.",
+"Nuvvu naa moon.",
 "Naa love always."
 ];
 
+/* Random message with fade effect */
 function showMessage(category) {
-  const randomIndex = Math.floor(Math.random() * category.length);
-  document.getElementById("messageBox").innerText = category[randomIndex];
+  const box = document.getElementById("messageBox");
+  box.style.opacity = 0;
+  setTimeout(() => {
+    const randomIndex = Math.floor(Math.random() * category.length);
+    box.innerText = category[randomIndex];
+    box.style.opacity = 1;
+  }, 200);
 }
 
 </script>
 
 </body>
 </html>
+
